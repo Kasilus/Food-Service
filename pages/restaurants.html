@@ -13,17 +13,7 @@
     
   </style>
   
-  	<script>
-$(function(){
-
-  $(".dropdown-menu li a").click(function(){
-
-    $(".dropdown .btn:first-child").text($(this).text());
-     $(".dropdown .btn:first-child").val($(this).text());
-  });
-
-});
-						</script>
+  	
 </head>
 <body>
 
@@ -64,10 +54,11 @@ $(function(){
 
 <div class = "search_with_params">
  <form>
+	<div class = "search">
 	<div class = "row">
 	<div class = "col-sm-2">
 	</div>
-	<div class = "col-sm-5">
+	<div class = "col-sm-8">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search">
       <div class="input-group-btn">
@@ -75,47 +66,34 @@ $(function(){
       </div>
     </div>
 	</div>
-	
-
-	<div class = "col-sm-2">
-	<div class="dropdown">
-		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Сортировать по
-			<span class="caret"/>
-		</button>
-		<ul class="dropdown-menu">
-			<li>
-				<a href="#">по популярности</a>
-			</li>
-			<li>
-				<a href="#">по рейтингу</a>
-			</li>
-			<li>
-				<a href="#">самые новые</a>
-			</li>
-		</ul>
 	</div>
+	</div>
+	
+	<div class = "row">
+	<div class = "col-sm-6">
+	</div>
+	<div class = "col-sm-2">
+	<label for="sel1">Сортировать по:</label>
+      <select class="form-control" id="sel1">
+        <option>популярности</option>
+        <option>рейтингу</option>
+        <option>самые новые</option>
+      </select>
+	
 	</div>
 	
 	<div class = "col-sm-2">
-	<div class="dropdown">
-		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">к-во на странице
-			<span class="caret"/>
-		</button>
-		<ul class="dropdown-menu">
-			<li>
-				<a href="#">5</a>
-			</li>
-			<li>
-				<a href="#">10</a>
-			</li>
-			<li>
-				<a href="#">20</a>
-			</li>
-		</ul>
+	<label for="sel1">Штук на странице:</label>
+      <select class="form-control" id="sel1">
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+      </select>
 	</div>
 	</div>
 	
-	</div>
+	
   </form>
   </div>
   

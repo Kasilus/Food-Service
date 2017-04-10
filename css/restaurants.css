@@ -1,6 +1,11 @@
 .search_with_params{
 	margin-top:40px;
 	padding-top:40px;
+	padding-bottom:60px;
+}
+
+.search{
+	margin-bottom:30px;
 }
 
 .restaurant_list {
