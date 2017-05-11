@@ -85,23 +85,19 @@
 																	<div class = "col-sm-10">
 																		<div class="radio-inline">
 																			<label>
-																				<input type="radio" name="usertype">Пользователь</label>
+																				<input type="radio" name="usertype" value="user-radio" id="firstbutton" checked="">Пользователь</label>
 																			</div>
 																			<div class="radio-inline">
 																				<label>
-																					<input type="radio" name="usertype">Заведение общественного питания</label>
+																					<input type="radio" name="usertype" value="place-radio" id="secondbutton">Заведение общественного питания</label>
 																			</div>
-																			<div class="radio-inline">
-																					<label>
-																						<input type="radio" name="usertype">Служба доставки</label>
-																				</div>
 																	</div>
 																</div>
 
 																			<div class="form-group">
-																				<label class="control-label col-sm-2" for="email">Имя\Название:</label>
+																				<label class="control-label col-sm-2" for="email" id="nameName">Имя:</label>
 																				<div class="col-sm-10">
-																					<input type="text" class="form-control" id="email" placeholder="Введите логин">
+																					<input type="text" class="form-control" id="email" placeholder="">
 																					</div>
 																				</div>
 																				<div class="form-group">
@@ -168,5 +164,18 @@
 																			</div>
 																		</div>
 
+<script>
+	
+$('input[name=usertype]').change(function()  {
+    // change the page per this logic
+    switch ($('input[name=usertype]:checked').val()) {
+        case 'user-radio':
+            $('#nameName').text('Имя:'); break;
+        case 'place-radio':
+            $('#nameName').text('Название:'); break;
+}
+});
+</script>																		
+																		
 																	</body>
 																</html>
