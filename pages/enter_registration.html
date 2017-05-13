@@ -121,7 +121,7 @@
 																								</div>
 																							</div>
 
-																							<div class="form-group">
+																							<div class="form-group" id="sex">
 																								<label class="control-label col-sm-2" for="email">Пол:</label>
 																								<div class="col-sm-10">
 																									  <select class="form-control" id="sel1">
@@ -170,12 +170,15 @@ $('input[name=usertype]').change(function()  {
     // change the page per this logic
     switch ($('input[name=usertype]:checked').val()) {
         case 'user-radio':
-            $('#nameName').text('Имя:'); break;
+            $('#nameName').text('Имя:');
+			document.getElementById('sex').style.display='block';	break;
         case 'place-radio':
-            $('#nameName').text('Название:'); break;
+            $('#nameName').text('Название:');
+			document.getElementById('sex').style.display='none';    break;
 }
 });
-</script>																		
+</script>					
+											
 																		
 																	</body>
 																</html>
