@@ -11,12 +11,12 @@
         <intercept-url pattern="/" access="hasRole('Consumer')"/>
         <intercept-url pattern="/" access="hasRole('Catering facilities')"/>
         <form-login
-                login-page="/login"
+                login-page="/enter_registration"
                 default-target-url="/index"
-                authentication-failure-url="/login?error"
+                authentication-failure-url="/enter_registration?error"
                 username-parameter="username"
                 password-parameter="password"/>
-        <logout logout-success-url="/login?logout"/>
+        <logout logout-success-url="/enter_registration?logout"/>
 
     </http>
 

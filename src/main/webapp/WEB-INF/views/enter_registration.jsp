@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>Вход</title>
@@ -38,29 +44,25 @@
 													<div id="legendEnter">
 														<legend class="">Вход</legend>
 													</div>
-														
-													<form class="form-horizontal">
-														<div class="form-group">
+
+													<form method="POST" action="${contextPath}/enter_registration"  class="form-horizontal">
+														<div class="form-group" ${error != null ? 'has-error' : ''}>
+
+															<span>${message}</span>
 															<label class="control-label col-sm-2" for="loginEnter">Логин:</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" id="loginEnter" placeholder="Введите логин">
+																<input type="text" name="username" class="form-control" id="loginEnter" placeholder="Введите логин">
 															</div>
-														</div>
-														<div class="form-group">
+
+
 															<label class="control-label col-sm-2" for="passwordEnter">Пароль:</label>
 															<div class="col-sm-10">
-																<input type="password" class="form-control" id="passwordEnter" placeholder="Введите пароль">
+																<input type="password" name="password" class="form-control" id="passwordEnter" placeholder="Введите пароль">
 															</div>
-														</div>
-														<div class="form-group">
-															<div class="col-sm-offset-2 col-sm-10">
-																<div class="checkbox">
-																	<label>
-																		<input type="checkbox"> Запомнить меня</label>
-																	</div>
-																</div>
-														</div>
-														<div class="form-group">
+
+                                                            <span>${error}</span>
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 															<div class="col-sm-offset-2 col-sm-10">
 																<button type="submit" class="btn btn-primary">Отправить</button>
 															</div>
@@ -158,7 +160,7 @@
 					</div>
 
 <script>
-	
+
 $('input[name=usertype]').change(function()  {
     // change the page per this logic
     switch ($('input[name=usertype]:checked').val()) {
@@ -170,7 +172,7 @@ $('input[name=usertype]').change(function()  {
 			document.getElementById('sex').style.display='none';    break;
 }
 });
-</script>					
+</script>
 
 
 
