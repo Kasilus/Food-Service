@@ -4,6 +4,7 @@ package com.stanislav.business.web;
 import com.stanislav.business.service.SecurityService;
 import com.stanislav.business.service.UserService;
 import com.stanislav.business.validator.UserValidator;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 public class UserController {
@@ -31,6 +34,20 @@ public class UserController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String indexPage() {
         return "index";
+    }
+
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+    public ModelAndView accessDenied(Principal user){
+
+        ModelAndView model = new ModelAndView();
+
+        if (user!=null){
+            model.addObject("errorMsg", user.getName() + ", у Вас нет доступа к этой странице");
+        } else {
+            model.addObject("errorMsg", "У Вас нет доступа к этой странице");
+        }
+        model.setViewName("/accessDenied");
+        return model;
     }
 
     @RequestMapping(value = {"/", "enter_registration"},
