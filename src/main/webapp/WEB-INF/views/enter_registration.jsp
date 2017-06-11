@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="${contextPath}/css/index.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
@@ -45,28 +45,31 @@
 														<legend class="">Вход</legend>
 													</div>
 
-													<form method="POST" action="${contextPath}/enter_registration"  class="form-horizontal">
-														<div class="form-group" ${error != null ? 'has-error' : ''}>
+													<form method="POST" action="j_spring_security_check"  class="form-horizontal">
+														<div class="form-group" >
 
-															<span>${message}</span>
 															<label class="control-label col-sm-2" for="loginEnter">Логин:</label>
 															<div class="col-sm-10">
-																<input type="text" name="username" class="form-control" id="loginEnter" placeholder="Введите логин">
+																<input type="text" name="user_login" class="form-control" id="loginEnter" placeholder="Введите логин">
 															</div>
+														</div>
 
-
+														<div class="form-group" >
 															<label class="control-label col-sm-2" for="passwordEnter">Пароль:</label>
 															<div class="col-sm-10">
-																<input type="password" name="password" class="form-control" id="passwordEnter" placeholder="Введите пароль">
+																<input type="password" name="password_login" class="form-control" id="passwordEnter" placeholder="Введите пароль">
 															</div>
+														</div>
 
-                                                            <span>${error}</span>
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
+														<div class="form-group" >
 															<div class="col-sm-offset-2 col-sm-10">
 																<button type="submit" class="btn btn-primary">Отправить</button>
 															</div>
 														</div>
+														<c:if test="${not empty error}">
+															<span class="error">${error}</span>
+														</c:if>
 													</form>
 												</div>
 

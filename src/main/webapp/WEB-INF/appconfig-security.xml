@@ -7,26 +7,32 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true">
-        <intercept-url pattern="/" access="hasRole('Consumer')"/>
-        <intercept-url pattern="/" access="hasRole('Catering facilities')"/>
+
+    <http use-expressions="true">
+        <intercept-url pattern="/index" access="hasRole('ROLE_USER')"/>
+
         <form-login
                 login-page="/enter_registration"
                 default-target-url="/index"
-                authentication-failure-url="/enter_registration?error"
-                username-parameter="username"
-                password-parameter="password"/>
-        <logout logout-success-url="/enter_registration?logout"/>
+                login-processing-url="/j_spring_security_check"
+                authentication-failure-url="/enter_registration?error=true"
+                username-parameter="user_login"
+                password-parameter="password_login"/>
+        <logout logout-success-url="/enter_registration"/>
 
     </http>
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="userDetailsServiceImpl">
-            <password-encoder ref="encoder"></password-encoder>
+        <authentication-provider >
+            <user-service>
+                <user name="user" password="user" authorities="ROLE_USER"/>
+                <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+            </user-service>
+            <!--<password-encoder ref="encoder"></password-encoder>-->
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean id="userDetailsServiceImpl" class="com.stanislav.business.service.UserDetailsServiceImpl"/>
+    <!--<beans:bean id="userDetailsServiceImpl" class="com.stanislav.business.service.UserDetailsServiceImpl"/>-->
 
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
