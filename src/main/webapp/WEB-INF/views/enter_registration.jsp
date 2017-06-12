@@ -61,6 +61,15 @@
 															</div>
 														</div>
 
+														<div class="form-group">
+															<div class="col-sm-offset-2 col-sm-10">
+																<div class="checkbox">
+																	<label>
+																		<input name="_spring_security_remember_me" type="checkbox"> Запомнить меня</label>
+																</div>
+															</div>
+														</div>
+
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 														<div class="form-group" >
 															<div class="col-sm-offset-2 col-sm-10">

@@ -23,6 +23,8 @@
                 password-parameter="password_login"/>
         <logout logout-success-url="/enter_registration"/>
 
+        <remember-me remember-me-parameter="_spring_security_remember_me" />
+
     </http>
 
     <authentication-manager alias="authenticationManager">
