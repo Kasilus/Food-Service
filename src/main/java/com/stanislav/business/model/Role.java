@@ -5,15 +5,20 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "profilecategories")
+@Table(name = "role")
 public class Role {
-
-    private Long id;
-    private String name;
-    private Set<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+
     public Long getId() {
         return id;
     }
@@ -30,7 +35,6 @@ public class Role {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "role")
     public Set<User> getUsers() {
         return users;
     }

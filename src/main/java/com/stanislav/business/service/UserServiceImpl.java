@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -32,7 +34,7 @@ public class UserServiceImpl implements UserService {
         logger.debug("Start user save in UserServiceImpl");
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRole((Role) roleRepository.findAll());
+        user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
 
         logger.debug("End user save in UserServiceImpl");

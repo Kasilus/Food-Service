@@ -1,24 +1,46 @@
 package com.stanislav.business.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "profiles")
+@Table(name = "user")
 public class User {
-
-    private Long id;
-    private String name;
-    private String username;
-    private String password;
-    private String passwordConfirm;
-    private String email;
-    private String registertime;
-    private Sex sex;
-    private Role role;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
+    @Transient
+    private String passwordConfirm;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "registertime")
+    private String registertime;
+
+    @Column(name = "sex")
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+
     public Long getId() {
         return id;
     }
@@ -51,7 +73,7 @@ public class User {
         this.password = password;
     }
 
-    @Transient
+
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
@@ -84,15 +106,12 @@ public class User {
         sex = m;
     }
 
-    @OneToOne
-    @JoinTable(name = "profile_profilecategory",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Role getRole() {
-        return role;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
