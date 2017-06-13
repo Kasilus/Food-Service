@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="${contextPath}/css/index.css">
+		<link rel="stylesheet" type="text/css" href="${contextPath}resources/css/enter_registration.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
@@ -61,6 +61,14 @@
 															</div>
 														</div>
 
+														<div class="form-group" >
+																<div class=" col-sm-offset-2 col-sm-10">
+																	<c:if test="${not empty error}">
+																		<span class="error">${error}</span>
+																	</c:if>
+																</div>
+														</div>
+
 														<div class="form-group">
 															<div class="col-sm-offset-2 col-sm-10">
 																<div class="checkbox">
@@ -76,9 +84,7 @@
 																<button type="submit" class="btn btn-primary">Отправить</button>
 															</div>
 														</div>
-														<c:if test="${not empty error}">
-															<span class="error">${error}</span>
-														</c:if>
+
 													</form>
 												</div>
 
