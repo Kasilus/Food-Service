@@ -32,8 +32,18 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String indexPage() {
-        return "index";
+    public ModelAndView indexPage(Principal user) {
+
+        ModelAndView model = new ModelAndView();
+
+        if (user!=null){
+            model.addObject("nameOfUser",user.getName());
+        } else {
+            model.addObject("nameOfUser",user.getName());
+        }
+
+        return model;
+
     }
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
