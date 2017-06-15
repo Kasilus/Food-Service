@@ -96,47 +96,61 @@
 														<legend class="">Регистрация</legend>
 													</div>
 
-													<form class="form-horizontal">
+													<form:form method="POST" modelAttribute="userForm" class="form-horizontal">
 														<div class="form-group">
 															<label class="control-label col-sm-2">Кем вы будете?</label>
 															<div class = "col-sm-10">
 																<div class="radio-inline">
 																	<label>
-																		<input type="radio" name="usertype" value="user-radio" id="Userbutton" checked="">Пользователь</label>
+																		<input type="radio" name="usertype" value="user-radio" id="UserRadiobutton" checked="">Пользователь</label>
 																</div>
 																<div class="radio-inline">
 																	<label>
-																		<input type="radio" name="usertype" value="place-radio" id="Restaurantbutton">Заведение общественного питания</label>
+																		<input type="radio" name="usertype" value="restaurant-radio" id="RestaurantRadiobutton">Заведение общественного питания</label>
 																</div>
 															</div>
 														</div>
 
-														<div class="form-group">
+														<spring:bind path="name">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
 															<label class="control-label col-sm-2" for="nameRegistration" id="nameName">Имя:</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" id="nameRegistration" placeholder="">
+																<form:input type="text" path="name" class="form-control" id="nameRegistration" placeholder="" />
+																<form:errors path="name"></form:errors>
 															</div>
 														</div>
-														<div class="form-group">
-															<label class="control-label col-sm-2" for="loginRegistration">Логин:</label>
-															<div class="col-sm-10">
-																<input type="text" class="form-control" id="loginRegistration" placeholder="Придумайте логин">
-															</div>
-														</div>
+														</spring:bind>
 
-														<div class="form-group">
+														<spring:bind path="username">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
+															<label class="control-label col-sm-2" for="usernameRegistration">Логин:</label>
+															<div class="col-sm-10">
+																<form:input type="text" path="username" class="form-control" id="usernameRegistration" placeholder="Придумайте логин" />
+																<form:errors path="username"></form:errors>
+															</div>
+														</div>
+														</spring:bind>
+
+														<spring:bind path="password">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
 															<label class="control-label col-sm-2" for="passwordRegistration">Придумайте пароль:</label>
 															<div class="col-sm-10">
-																<input type="password" class="form-control" id="passwordRegistration" placeholder="">
+																<form:input type="password" path="password" class="form-control" id="passwordRegistration" placeholder="" />
+																<form:errors path="password"></form:errors>
 															</div>
 														</div>
+														</spring:bind>
 
-														<div class="form-group">
+														<spring:bind path="passwordConfirm">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
 															<label class="control-label col-sm-2" for="passwordConfirmationRegistration">Подтвердите пароль:</label>
 															<div class="col-sm-10">
-																<input type="password" class="form-control" id="passwordConfirmationRegistration" placeholder="">
+																<form:input type="password" path="passwordConfirm" class="form-control" id="passwordConfirmationRegistration" placeholder="" />
+
+																<form:errors path="passwordConfirm"></form:errors>
 																</div>
 														</div>
+														</spring:bind>
 
 														<div class="form-group" id="sex">
 															<label class="control-label col-sm-2" for="sexRegistration">Пол:</label>
@@ -148,26 +162,34 @@
 															</div>
 														</div>
 
-														<div class="form-group">
+														<spring:bind path="email">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
 															<label class="control-label col-sm-2" for="emailRegistration">Почта:</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" id="emailRegistration" placeholder="Введите адрес почты">
+																<form:input type="text" path="email" class="form-control" id="emailRegistration" placeholder="Введите адрес почты" />
+
+																<form:errors path="email"></form:errors>
 															</div>
 														</div>
+														</spring:bind>
 
-														<div class="form-group">
+														<spring:bind path="phone">
+														<div class="form-group ${status.error ? 'has-error' : ''}">
 															<label class="control-label col-sm-2" for="phoneRegistration">Мобильный телефон:</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" id="phoneRegistration" placeholder="+380">
+																<form:input type="text" path="phone" class="form-control" id="phoneRegistration" placeholder="+380" />
+
+																<form:errors path="phone"></form:errors>
 															</div>
 														</div>
+														</spring:bind>
 
 														<div class="form-group">
 															<div class="col-sm-offset-2 col-sm-10">
 																<button  type="submit" class="btn btn-primary">Зарегестрироваться</button>
 															</div>
 														</div>
-													</form>
+													</form:form>
 												</div>
 											</div>
 										</div>
@@ -185,7 +207,7 @@ $('input[name=usertype]').change(function()  {
         case 'user-radio':
             $('#nameName').text('Имя:');
 			document.getElementById('sex').style.display='block';	break;
-        case 'place-radio':
+        case 'restaurant-radio':
             $('#nameName').text('Название:');
 			document.getElementById('sex').style.display='none';    break;
 }

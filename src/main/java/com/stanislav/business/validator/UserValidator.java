@@ -50,6 +50,9 @@ public class UserValidator implements Validator {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+
+
         logger.debug("End user validation in UserValidator");
     }
 }

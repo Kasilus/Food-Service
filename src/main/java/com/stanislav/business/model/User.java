@@ -34,6 +34,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    @Column(name = "phone")
+    private String phone;
+
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -106,6 +109,13 @@ public class User {
         sex = m;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public Set<Role> getRoles() {
         return roles;
