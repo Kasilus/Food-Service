@@ -1,6 +1,7 @@
 package com.stanislav.business.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -28,7 +29,7 @@ public class User {
     private String email;
 
     @Column(name = "registertime")
-    private String registertime;
+    private Timestamp registertime;
 
     @Column(name = "sex")
     @Enumerated(EnumType.STRING)
@@ -93,11 +94,11 @@ public class User {
         this.email = email;
     }
 
-    public String getRegisterTime() {
+    public Timestamp getRegisterTime() {
         return registertime;
     }
 
-    public void setRegisterTime(String registerTime) {
+    public void setRegisterTime(Timestamp registerTime) {
         this.registertime = registerTime;
     }
 
