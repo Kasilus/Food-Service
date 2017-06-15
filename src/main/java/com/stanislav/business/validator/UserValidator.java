@@ -11,6 +11,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Component
 public class UserValidator implements Validator {
 
@@ -30,6 +33,8 @@ public class UserValidator implements Validator {
         logger.debug("Start user validation in UserValidator");
 
         User user = (User) o;
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty");
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
 
@@ -52,7 +57,29 @@ public class UserValidator implements Validator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
 
+        if (!vaildEmail(user.getEmail())){
+            errors.rejectValue("email", "Incorrect.userForm.mail");
+        }
+
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "NotEmpty");
+
+        if (!validPhone(user.getPhone())){
+            errors.rejectValue("phone", "Incorrect.userForm.phone");
+        }
 
         logger.debug("End user validation in UserValidator");
     }
+
+    private static boolean vaildEmail(String email){
+        return Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").matcher(email).matches();
+
+    }
+
+    private static boolean validPhone(String phone){
+        return Pattern.compile("\\+38[0-9]{7,15}")
+                .matcher(phone).matches();
+    }
+
+
 }
