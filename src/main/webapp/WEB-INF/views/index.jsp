@@ -30,7 +30,7 @@
       <div class="jumbotron">
         <div class="container text-center">
           <h1>Pay Eat Pray</h1>
-          <p>Всё, что тебе нужно</p>
+          <p>All you need!</p>
         </div>
       </div>
 
@@ -47,15 +47,15 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Домой</a></li>
-              <li><a href="pages/restaurants.html">Заведения</a></li>
-              <li><a href="#">О нас</a></li>
-              <li><a href="#">Как заказать?</a></li>
-              <li><a href="#">Контакты</a></li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="pages/restaurants.html">Restaurants</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">How to deliver?</a></li>
+              <li><a href="#">Contacts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nameOfUser}</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Покупки</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
             </ul>
           </div>
       </nav>
@@ -73,16 +73,16 @@
             <div class="item active">
               <img src="https://placehold.it/1200x400?text=IMAGE" alt="Image">
               <div class="carousel-caption">
-                <h3>Заведения на любой вкус</h3>
-                <p>Первое заведение</p>
+                <h3>Eating out for every taste</h3>
+                <p>First reataurant</p>
               </div>
             </div>
 
             <div class="item">
               <img src="https://placehold.it/1200x400?text=Another Image Maybe" alt="Image">
               <div class="carousel-caption">
-                <h3>Заведения на любой вкус</h3>
-                <p>Второе заведение</p>
+                <h3>Eating out for every taste</h3>
+                <p>Second reataurant</p>
               </div>
             </div>
           </div>
@@ -101,40 +101,40 @@
 
       <div class="about">
         <div class="container" >
-            <h1>Почему мы?</h1>
-            <h4>Есть! Каждый человек хочет есть. Зачастую, сам не понимает, что именно сейчас и в данный
-            момент. Чтобы решить эту проблему раз и навсегда, был создан сервис Pay Eat Pray или
-            просто <abbr title="PayEatPray">PEP</abbr>. Все Ваши любимые рестораны, бары, кафе быстрого питания теперь собраны здесь.
-            Каждый из них предлагает своё уникальное меню, специальные предложения и способ доставки.
-            Вам остаётся лишь сделать свой выбор и дождаться желанного! </h4>
+            <h1>Why we?</h1>
+            <h4>Eat! Everyone want eat. Often, you don't understand what exactly in this moment.
+                To solve this problem once and for all, the Pay Eat Pray <abbr title="PayEatPray">PEP</abbr>
+                service was created. All your favorite restaurants, bars, fast food restaurants are
+                now collected here. Each of them offers its own unique menu, special offers
+                and delivery method. You just have to make your choice and wait for the desired! </h4>
         </div>
 
         <div class="container" >
-            <h1>Польза для каждого</h1>
-            <h4>Вы можете зарегестрироваться, как обычный пользователь, так и заведение общественного питания
-                или служба доставки. При этом основные функции не урезаются, а только расширяются : все участники
-                могут совершать заказы, не выходя из своего собственного аккаунта. </h4>
+            <h1>Benefits for everyone</h1>
+            <h4>You can register as a regular user and a catering establishment.
+                At the same time, the main functions are not cut, but only expanded:
+                all participants can make orders without leaving their own account. </h4>
         </div>
 
         <div class="container" >
-            <h1>Простота и удобство</h1>
-            <h4>Ничего лишнего для клиентов. Главной целью является заказ еды и именно на это сделан максимальный упор.
-            Огромный выбор критериев поиска нужного заведения. Возможность покупки прямо на странице выбранного заведения.
-            Всё для максимальной скорости заказа и приятного использования.</h4>
+            <h1>Simplicity and convenience</h1>
+            <h4>Nothing extra for customers. The main purpose is to order food and this is the maximum emphasis.
+                Huge selection of criteria for finding the right restaurant. The possibility of buying directly on the page of the chosen restaurant.
+                Everything for maximum speed of order and enjoyable use.</h4>
         </div>
 
         <div class="container">
-            <h1>Личный кабинет</h1>
-            <h4>Открывает большие возможности для зарегестрированного пользователя : позволяет редактировать свой профиль,
-            просматривать историю заказов за всё время, оставлять комментарии, оценивать заведения. Особенностью есть поле
-            "Запомнить". С помощью него Вы формируете личный рейтинг любимых (или наоборот) заведений.</h4>
+            <h1>Personal area</h1>
+            <h4>Opens great opportunities for a registered user: allows you to edit your profile,
+                view order history for all time, leave comments, rate restaurants. Feature is a field
+                "Remember". With the help of it you form a personal rating of your favorite (or vice versa) restaurants.</h4>
         </div>
 
         <div class="container" >
-            <h1>Рейтинг заведений</h1>
-            <h4>Каждому заведению может выставляться оценка. Единый сервис PayEatPray позволит сделать Вам правильный
-                выбор и остаться довольным заказом. Также это прекрасный шанс для роста молодых заведений. Самые успешные
-                попадают на главную страницу. Это увеличит посещаемость в разы.</h4>
+            <h1>Rating of restaurants</h1>
+            <h4>Each restaurant may be assessed. A single PayEatPray service will make you right
+                choose and stay satisfied with the order. It is also an excellent chance for the growth of young restaurants.
+                The most successful get on the main page. This will increase attendance at times.</h4>
         </div>
       </div>
 
@@ -143,33 +143,33 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="panel panel-primary">
-              <div class="panel-heading">Заведение недели</div>
+              <div class="panel-heading">Restaurant of week</div>
               <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Название</div>
+              <div class="panel-footer">Title</div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="panel panel-primary">
-              <div class="panel-heading">Заведение недели</div>
+              <div class="panel-heading">Restaurant of week</div>
               <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Название</div>
+              <div class="panel-footer">Title</div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="panel panel-primary">
-              <div class="panel-heading">Заведение недели</div>
+              <div class="panel-heading">Restaurant of week</div>
               <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Название</div>
+              <div class="panel-footer">Title</div>
             </div>
           </div>
         </div>
       </div><br><br>
 
       <div class="container" style="margin-bottom:50px">
-        <h1>Цитата дня</h1>
+        <h1>Quote of the day</h1>
         <blockquote>
-          <p>Если в стране нет по меньшей мере пятидесяти сортов сыра и хорошего вина, значит, страна дошла до ручки.</p>
-          <footer>(с) Сальвадор Дали</footer>
+          <p>There are only three things women need in life: food, water, and compliments</p>
+          <footer>(с) Chris Rock</footer>
         </blockquote>
       </div>
 
@@ -177,27 +177,27 @@
       <footer class="container-fluid text-center">
 
         <div class="container-fluid bg-grey" style="margin:30px auto">
-          <h2 class="text-center">Контакты</h2>
+          <h2 class="text-center">Contacts</h2>
           <div class="row">
             <div class="col-sm-5">
-              <p>Вопросы и пожелания будут обработаны в течение 3-х суток.</p>
-              <p><span class="glyphicon glyphicon-map-marker"></span> Киев, Украина</p>
+              <p>Questions and wishes will be considered in 3 days.</p>
+              <p><span class="glyphicon glyphicon-map-marker"></span> Kyiv, Ukraine</p>
               <p><span class="glyphicon glyphicon-phone"></span> +380 (095) 307-15-44</p>
               <p><span class="glyphicon glyphicon-envelope"></span> its.an.omen.man@gmail.com</p>
             </div>
             <div class="col-sm-7">
               <div class="row">
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="nameSend" name="nameSend" placeholder="Ваше имя" type="text" required>
+                  <input class="form-control" id="nameSend" name="nameSend" placeholder="Your name" type="text" required>
                 </div>
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="emailSend" name="emailSend" placeholder="Ваш e-mail" type="email" required>
+                  <input class="form-control" id="emailSend" name="emailSend" placeholder="Your e-mail" type="email" required>
                 </div>
               </div>
-              <textarea class="form-control" id="commentsSend" name="commentsSend" placeholder="Сообщение" rows="5"></textarea><br>
+              <textarea class="form-control" id="commentsSend" name="commentsSend" placeholder="Message" rows="5"></textarea><br>
               <div class="row">
                 <div class="col-sm-12 form-group">
-                  <button class="btn btn-default pull-right" type="submit">Отправить</button>
+                  <button class="btn btn-default pull-right" type="submit">Send</button>
                 </div>
               </div>
             </div>

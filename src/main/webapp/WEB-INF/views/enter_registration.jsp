@@ -1,14 +1,17 @@
 ﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
 	<head>
-		<title>Вход</title>
-		<meta charset="utf-8">
+		<title>Enter</title>
+		<meta charset="utf-8" />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -27,37 +30,37 @@
 								<div class="" id="loginModal">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h3>У вас уже есть аккаунт?</h3>
+										<h3>Have an account?</h3>
 									</div>
 									<div class="modal-body">
 										<div class="well">
 											<ul class="nav nav-tabs">
 												<li class="active">
-													<a href="#login" data-toggle="tab">Войти</a>
+													<a href="#login" data-toggle="tab">Log in</a>
 												</li>
 												<li>
-													<a href="#registration" data-toggle="tab">Создать аккаунт</a>
+													<a href="#registration" data-toggle="tab">Create account</a>
 												</li>
 											</ul>
 											<div id="myTabContent" class="tab-content" style="margin-top:20px">
 												<div class="tab-pane active in" id="login">
 													<div id="legendEnter">
-														<legend class="">Вход</legend>
+														<legend class="">Enter</legend>
 													</div>
 
 													<form method="POST" action="j_spring_security_check"  class="form-horizontal">
 														<div class="form-group" >
 
-															<label class="control-label col-sm-2" for="loginEnter">Логин:</label>
+															<label class="control-label col-sm-2" for="loginEnter">Login:</label>
 															<div class="col-sm-10">
-																<input type="text" name="user_login" class="form-control" id="loginEnter" placeholder="Введите логин">
+																<input type="text" name="user_login" class="form-control" id="loginEnter" placeholder="Enter login">
 															</div>
 														</div>
 
 														<div class="form-group" >
-															<label class="control-label col-sm-2" for="passwordEnter">Пароль:</label>
+															<label class="control-label col-sm-2" for="passwordEnter">Password:</label>
 															<div class="col-sm-10">
-																<input type="password" name="password_login" class="form-control" id="passwordEnter" placeholder="Введите пароль">
+																<input type="password" name="password_login" class="form-control" id="passwordEnter" placeholder="Enter password">
 															</div>
 														</div>
 
@@ -73,7 +76,7 @@
 															<div class="col-sm-offset-2 col-sm-10">
 																<div class="checkbox">
 																	<label>
-																		<input name="_spring_security_remember_me" type="checkbox"> Запомнить меня</label>
+																		<input name="_spring_security_remember_me" type="checkbox"> Remember me</label>
 																</div>
 															</div>
 														</div>
@@ -81,7 +84,7 @@
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 														<div class="form-group" >
 															<div class="col-sm-offset-2 col-sm-10">
-																<button type="submit" class="btn btn-primary">Отправить</button>
+																<button type="submit" class="btn btn-primary">Send</button>
 															</div>
 														</div>
 
@@ -93,27 +96,27 @@
 												<div class="tab-pane fade" id="registration">
 
 													<div id="legendRegistration">
-														<legend class="">Регистрация</legend>
+														<legend class="">Registration</legend>
 													</div>
 
 													<form:form method="POST" modelAttribute="userForm" class="form-horizontal">
 														<div class="form-group">
-															<label class="control-label col-sm-2">Кем вы будете?</label>
+															<label class="control-label col-sm-2">Who will you be?</label>
 															<div class = "col-sm-10">
 																<div class="radio-inline">
 																	<label>
-																		<input type="radio" name="usertype" value="user-radio" id="UserRadiobutton" checked="">Пользователь</label>
+																		<input type="radio" name="usertype" value="user-radio" id="UserRadiobutton" checked="">User</label>
 																</div>
 																<div class="radio-inline">
 																	<label>
-																		<input type="radio" name="usertype" value="restaurant-radio" id="RestaurantRadiobutton">Заведение общественного питания</label>
+																		<input type="radio" name="usertype" value="restaurant-radio" id="RestaurantRadiobutton">Restaurant</label>
 																</div>
 															</div>
 														</div>
 
 														<spring:bind path="name">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="nameRegistration" id="nameName">Имя:</label>
+															<label class="control-label col-sm-2" for="nameRegistration" id="nameName">Name:</label>
 															<div class="col-sm-10">
 																<form:input type="text" path="name" class="form-control" id="nameRegistration" placeholder="" />
 																<form:errors path="name"></form:errors>
@@ -123,9 +126,9 @@
 
 														<spring:bind path="username">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="usernameRegistration">Логин:</label>
+															<label class="control-label col-sm-2" for="usernameRegistration">Login:</label>
 															<div class="col-sm-10">
-																<form:input type="text" path="username" class="form-control" id="usernameRegistration" placeholder="Придумайте логин" />
+																<form:input type="text" path="username" class="form-control" id="usernameRegistration" placeholder="Create a login" />
 																<form:errors path="username"></form:errors>
 															</div>
 														</div>
@@ -133,7 +136,7 @@
 
 														<spring:bind path="password">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="passwordRegistration">Придумайте пароль:</label>
+															<label class="control-label col-sm-2" for="passwordRegistration">Create a password:</label>
 															<div class="col-sm-10">
 																<form:input type="password" path="password" class="form-control" id="passwordRegistration" placeholder="" />
 																<form:errors path="password"></form:errors>
@@ -143,7 +146,7 @@
 
 														<spring:bind path="passwordConfirm">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="passwordConfirmationRegistration">Подтвердите пароль:</label>
+															<label class="control-label col-sm-2" for="passwordConfirmationRegistration">Confirm your password:</label>
 															<div class="col-sm-10">
 																<form:input type="password" path="passwordConfirm" class="form-control" id="passwordConfirmationRegistration" placeholder="" />
 
@@ -153,20 +156,20 @@
 														</spring:bind>
 
 														<div class="form-group" id="sex">
-															<label class="control-label col-sm-2" for="sexRegistration">Пол:</label>
+															<label class="control-label col-sm-2" for="sexRegistration">Sex:</label>
 															<div class="col-sm-10">
 																  <select class="form-control" id="sexRegistration">
-																	<option>Мужской</option>
-																	<option>Женский</option>
+																	<option>Male</option>
+																	<option>Female</option>
 																  </select>
 															</div>
 														</div>
 
 														<spring:bind path="email">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="emailRegistration">Почта:</label>
+															<label class="control-label col-sm-2" for="emailRegistration">E-mail:</label>
 															<div class="col-sm-10">
-																<form:input type="text" path="email" class="form-control" id="emailRegistration" placeholder="Введите адрес почты" />
+																<form:input type="text" path="email" class="form-control" id="emailRegistration" placeholder="Enter e-mail address" />
 
 																<form:errors path="email"></form:errors>
 															</div>
@@ -175,7 +178,7 @@
 
 														<spring:bind path="phone">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="phoneRegistration">Мобильный телефон:</label>
+															<label class="control-label col-sm-2" for="phoneRegistration">Mobile:</label>
 															<div class="col-sm-10">
 																<form:input type="text" path="phone" class="form-control" id="phoneRegistration" placeholder="+380" />
 
@@ -186,7 +189,7 @@
 
 														<div class="form-group">
 															<div class="col-sm-offset-2 col-sm-10">
-																<button  type="submit" class="btn btn-primary">Зарегестрироваться</button>
+																<button  type="submit" class="btn btn-primary">Register</button>
 															</div>
 														</div>
 													</form:form>
@@ -205,10 +208,10 @@ $('input[name=usertype]').change(function()  {
     // change the page per this logic
     switch ($('input[name=usertype]:checked').val()) {
         case 'user-radio':
-            $('#nameName').text('Имя:');
+            $('#nameName').text('Name:');
 			document.getElementById('sex').style.display='block';	break;
         case 'restaurant-radio':
-            $('#nameName').text('Название:');
+            $('#nameName').text('Title:');
 			document.getElementById('sex').style.display='none';    break;
 }
 });

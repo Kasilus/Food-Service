@@ -74,7 +74,7 @@ public class UserController {
         if (error != null) {
             model.addObject(
                     "error",
-                    "Invalid username or password!");
+                    "Incorrect login or password!");
         }
         model.setViewName("enter_registration");
 
