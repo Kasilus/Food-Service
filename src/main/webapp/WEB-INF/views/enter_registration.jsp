@@ -15,11 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="${contextPath}resources/css/enter_registration.css">
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/enter_registration.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
-
 
 
 	</head>
@@ -120,7 +119,7 @@
 
 														<spring:bind path="name">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
-															<label class="control-label col-sm-2" for="nameRegistration" id="nameName">Name:</label>
+															<label class="control-label col-sm-2" for="nameRegistration" id="nameOrTitle">Name:</label>
 															<div class="col-sm-10">
 																<form:input type="text" path="name" class="form-control" id="nameRegistration" placeholder="" />
 																<form:errors path="name"></form:errors>
@@ -208,43 +207,7 @@
 						</div>
 					</div>
 					
-<script>
-
-function changeMenu()  {
-
-    var c;
-    	if(document.getElementById('RestaurantRadiobutton').checked == true){
-    	    c = 2;
-		} else {
-    	    c = 1;
-		}
-
-    switch (c) {
-
-        case 1:
-            $('#nameName').text('Name:');
-			document.getElementById('sexSelect').style.display='block';	break;
-        case 2:
-            $('#nameName').text('Title:');
-			document.getElementById('sexSelect').style.display='none';    break;
-}
-}
-</script>
-
-<script>
-	$(function() {
-		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-			localStorage.setItem('lastTab', $(this).attr('href'));
-		});
-
-		var lastTab = localStorage.getItem('lastTab');
-		if (lastTab) {
-			$('[href="' + lastTab + '"]').tab('show');
-		}
-	});
-</script>
-
-
+	<script src="${contextPath}/resources/js/enter_registration.js"></script>
 
 	</body>
 </html>
