@@ -24,7 +24,7 @@
 
 	</head>
 
-	<body>
+	<body onload="changeMenu()">
 
 					<div class="container">
 						<div class="row">
@@ -105,14 +105,16 @@
 														<div class="form-group">
 															<label class="control-label col-sm-2">Who will you be?</label>
 															<div class = "col-sm-10">
+																<spring:bind path="userType">
+
 																<div class="radio-inline">
-																	<label>
-																		<input type="radio" name="usertype" value="user-radio" id="UserRadiobutton" checked="">User</label>
+																		<form:radiobutton path="userType" onchange="javascript:changeMenu();" name="usertype" value="user" id="UserRadiobutton" checked="true" label="User" />
 																</div>
 																<div class="radio-inline">
-																	<label>
-																		<input type="radio" name="usertype" value="restaurant-radio" id="RestaurantRadiobutton">Restaurant</label>
+																		<form:radiobutton path="userType" onchange="javascript:changeMenu();" name="usertype" value="restaurant" id="RestaurantRadiobutton" label="Restaurant" />
 																</div>
+
+																</spring:bind>
 															</div>
 														</div>
 
@@ -205,20 +207,28 @@
 							</div>
 						</div>
 					</div>
-
+					
 <script>
 
-$('input[name=usertype]').change(function()  {
-    // change the page per this logic
-    switch ($('input[name=usertype]:checked').val()) {
-        case 'user-radio':
+function changeMenu()  {
+
+    var c;
+    	if(document.getElementById('RestaurantRadiobutton').checked == true){
+    	    c = 2;
+		} else {
+    	    c = 1;
+		}
+
+    switch (c) {
+
+        case 1:
             $('#nameName').text('Name:');
 			document.getElementById('sexSelect').style.display='block';	break;
-        case 'restaurant-radio':
+        case 2:
             $('#nameName').text('Title:');
 			document.getElementById('sexSelect').style.display='none';    break;
 }
-});
+}
 </script>
 
 <script>

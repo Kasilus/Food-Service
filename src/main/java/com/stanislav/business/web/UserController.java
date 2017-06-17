@@ -57,9 +57,9 @@ public class UserController {
         ModelAndView model = new ModelAndView();
 
         if (user!=null){
-            model.addObject("errorMsg", user.getName() + ", у Вас нет доступа к этой странице");
+            model.addObject("errorMsg", user.getName() + ", you don't have access to this page");
         } else {
-            model.addObject("errorMsg", "У Вас нет доступа к этой странице");
+            model.addObject("errorMsg", "You don't have access to this page");
         }
         model.setViewName("/accessDenied");
         return model;

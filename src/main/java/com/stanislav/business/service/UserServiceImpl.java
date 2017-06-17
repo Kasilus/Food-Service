@@ -14,8 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,7 +36,31 @@ public class UserServiceImpl implements UserService {
         logger.debug("Start user save in UserServiceImpl");
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
+
+        List<Role> roles = roleRepository.findAll();
+        Iterator<Role> iterator = roles.iterator();
+
+        while (iterator.hasNext()){
+            Role role = iterator.next();
+            if (role.getName().equals("ROLE_ADMIN")){
+                iterator.remove();
+            }
+        }
+
+        if (user.getUserType().equals("user")){
+            iterator = roles.iterator();
+
+            while (iterator.hasNext()){
+                Role role = iterator.next();
+                if (role.getName().equals("ROLE_RESTAURANT")){
+                    iterator.remove();
+                }
+            }
+        } else if (user.getUserType().equals("restaurant")){
+            user.setSex(Sex.M);
+        }
+
+        user.setRoles(new HashSet<>(roles));
         user.setRegisterTime(new Timestamp(new Date().getTime()));
         userRepository.save(user);
 

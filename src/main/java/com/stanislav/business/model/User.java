@@ -38,6 +38,18 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+
+    @Transient
+    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
