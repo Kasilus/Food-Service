@@ -45,7 +45,7 @@
 												</li>
 											</ul>
 											<div id="myTabContent" class="tab-content" style="margin-top:20px">
-												<div class="tab-pane" id="loginTab">
+												<div class="tab-pane active in" id="loginTab">
 													<div id="legendEnter">
 														<legend class="">Enter</legend>
 													</div>
@@ -157,15 +157,17 @@
 														</div>
 														</spring:bind>
 
-														<div class="form-group" id="sex">
+														<spring:bind path="sex">
+														<div class="form-group" id="sexSelect">
 															<label class="control-label col-sm-2" for="sexRegistration">Sex:</label>
 															<div class="col-sm-10">
-																  <select class="form-control" id="sexRegistration">
-																	<option>Male</option>
-																	<option>Female</option>
-																  </select>
+																<form:select path="sex" id="sexRegistration" cssClass="form-control">
+																	<form:option value="M" label="Male" />
+																	<form:option value="F" label="Female" />
+																</form:select>
 															</div>
 														</div>
+														</spring:bind>
 
 														<spring:bind path="email">
 														<div class="form-group ${status.error ? 'has-error' : ''}">
@@ -211,10 +213,10 @@ $('input[name=usertype]').change(function()  {
     switch ($('input[name=usertype]:checked').val()) {
         case 'user-radio':
             $('#nameName').text('Name:');
-			document.getElementById('sex').style.display='block';	break;
+			document.getElementById('sexSelect').style.display='block';	break;
         case 'restaurant-radio':
             $('#nameName').text('Title:');
-			document.getElementById('sex').style.display='none';    break;
+			document.getElementById('sexSelect').style.display='none';    break;
 }
 });
 </script>

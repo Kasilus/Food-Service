@@ -2,6 +2,7 @@ package com.stanislav.business.service;
 
 
 import com.stanislav.business.model.Role;
+import com.stanislav.business.model.Sex;
 import com.stanislav.business.model.User;
 import com.stanislav.business.repository.RoleRepository;
 import com.stanislav.business.repository.UserRepository;
