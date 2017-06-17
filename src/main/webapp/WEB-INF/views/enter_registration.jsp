@@ -20,6 +20,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
 
+
+
 	</head>
 
 	<body>
@@ -35,15 +37,15 @@
 									<div class="modal-body">
 										<div class="well">
 											<ul class="nav nav-tabs">
-												<li class="active">
-													<a href="#login" data-toggle="tab">Log in</a>
+												<li>
+													<a href="#loginTab" data-toggle="tab">Log in</a>
 												</li>
 												<li>
-													<a href="#registration" data-toggle="tab">Create account</a>
+													<a href="#registrationTab" data-toggle="tab">Create account</a>
 												</li>
 											</ul>
 											<div id="myTabContent" class="tab-content" style="margin-top:20px">
-												<div class="tab-pane active in" id="login">
+												<div class="tab-pane" id="loginTab">
 													<div id="legendEnter">
 														<legend class="">Enter</legend>
 													</div>
@@ -93,7 +95,7 @@
 
 
 
-												<div class="tab-pane fade" id="registration">
+												<div class="tab-pane" id="registrationTab">
 
 													<div id="legendRegistration">
 														<legend class="">Registration</legend>
@@ -215,6 +217,19 @@ $('input[name=usertype]').change(function()  {
 			document.getElementById('sex').style.display='none';    break;
 }
 });
+</script>
+
+<script>
+	$(function() {
+		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+			localStorage.setItem('lastTab', $(this).attr('href'));
+		});
+
+		var lastTab = localStorage.getItem('lastTab');
+		if (lastTab) {
+			$('[href="' + lastTab + '"]').tab('show');
+		}
+	});
 </script>
 
 
