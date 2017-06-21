@@ -61,11 +61,19 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "Incorrect.userForm.mail");
         }
 
+        if (userService.findByEmail(user.getEmail()) != null){
+            errors.rejectValue("email", "Duplicate.userForm.mail");
+        }
+
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "NotEmpty");
 
         if (!validPhone(user.getPhone())){
             errors.rejectValue("phone", "Incorrect.userForm.phone");
+        }
+
+        if (userService.findByPhone(user.getPhone()) != null){
+            errors.rejectValue("phone", "Duplicate.userForm.phone");
         }
 
         logger.debug("End user validation in UserValidator");
