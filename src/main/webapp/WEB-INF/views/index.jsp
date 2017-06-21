@@ -48,9 +48,9 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="pages/restaurants.html">Restaurants</a></li>
+              <li><a href="restaurants">Restaurants</a></li>
               <li><a href="#">About</a></li>
-              <li><a href="#">How to deliver?</a></li>
+              <li><a href="#">How to order?</a></li>
               <li><a href="#">Contacts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
