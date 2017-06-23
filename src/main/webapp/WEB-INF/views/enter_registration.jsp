@@ -67,11 +67,14 @@
 
 														<div class="form-group" >
 																<div class=" col-sm-offset-2 col-sm-10">
+																	<span>${message}</span>
 																	<c:if test="${not empty error}">
 																		<span class="error">${error}</span>
 																	</c:if>
 																</div>
 														</div>
+
+
 
 														<div class="form-group">
 															<div class="col-sm-offset-2 col-sm-10">

@@ -57,35 +57,33 @@ public class UserController {
 
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-    public ModelAndView accessDenied(Principal user){
-
-        ModelAndView model = new ModelAndView();
+    public String accessDenied(Principal user, Model model){
 
         if (user!=null){
-            model.addObject("errorMsg", user.getName() + ", you don't have access to this page");
+            model.addAttribute("errorMsg", user.getName() + ", you don't have access to this page");
         } else {
-            model.addObject("errorMsg", "You don't have access to this page");
+            model.addAttribute("errorMsg", "You don't have access to this page");
         }
-        model.setViewName("/accessDenied");
-        return model;
+
+        return "/accessDenied";
     }
 
     @RequestMapping(value = "/enter_registration",
             method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error",
-            required = false) String error) {
+    public String login(@RequestParam(value = "error",
+            required = false) String error, String logout, Model model) {
 
-        ModelAndView model = new ModelAndView();
         if (error != null) {
-            model.addObject(
-                    "error",
-                    "Incorrect login or password!");
+            model.addAttribute("error", "Incorrect login or password!");
         }
-        model.setViewName("enter_registration");
 
-        model.addObject("userForm", new User());
+        if (logout != null){
+            model.addAttribute("message", "You have been logged out successfully!");
+        }
 
-        return model;
+        model.addAttribute("userForm", new User());
+
+        return "enter_registration";
     }
 
     @RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
