@@ -23,10 +23,6 @@
 
 <body>
 
-<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-    <input type="submit" value="Logout" />
-</form:form>
-
       <div class="jumbotron">
         <div class="container text-center">
           <h1>Pay Eat Pray</h1>
@@ -49,9 +45,9 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="restaurants">Restaurants</a></li>
-              <li><a href="#">About</a></li>
               <li><a href="#">How to order?</a></li>
               <li><a href="#">Contacts</a></li>
+              <li><a href="<c:url value="/logout" />">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nameOfUser}</a></li>

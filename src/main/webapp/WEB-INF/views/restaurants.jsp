@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-  <title>Заведения</title>
+  <title>Restaurants</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,9 +45,9 @@
           <ul class="nav navbar-nav">
             <li ><a href="home">Home</a></li>
             <li class="active"><a href="#">Restaurants</a></li>
-            <li><a href="#">About us</a></li>
             <li><a href="#">How to order?</a></li>
             <li><a href="#">Contacts</a></li>
+            <li><a href="<c:url value="/logout" />">Logout</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Personal area</a></li>

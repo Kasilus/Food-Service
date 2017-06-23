@@ -8,6 +8,6 @@ public class RestaurantsController {
 
     @RequestMapping(value = "home")
     public String home() {
-        return "index";
+        return "redirect:/index";
     }
 }
