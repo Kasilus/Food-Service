@@ -1,9 +1,9 @@
 package com.stanislav.business.service;
 
 
-import com.stanislav.business.model.Role;
-import com.stanislav.business.model.Sex;
-import com.stanislav.business.model.User;
+import com.stanislav.business.model.*;
+import com.stanislav.business.repository.RestaurantRepository;
+import com.stanislav.business.repository.RestaurantTypeRepository;
 import com.stanislav.business.repository.RoleRepository;
 import com.stanislav.business.repository.UserRepository;
 import com.stanislav.business.validator.UserValidator;
@@ -23,12 +23,20 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Autowired
+    private RestaurantTypeRepository restaurantTypeRepository;
+
+    @Autowired
     private RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+
 
     @Override
     public void save(User user) {
@@ -38,6 +46,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         List<Role> roles = roleRepository.findAll();
+
         Iterator<Role> iterator = roles.iterator();
 
         while (iterator.hasNext()){
@@ -58,11 +67,22 @@ public class UserServiceImpl implements UserService {
             }
         } else if (user.getUserType().equals("restaurant")){
             user.setSex(Sex.M);
+
         }
+        System.out.println(user.getId());
 
         user.setRoles(new HashSet<>(roles));
         user.setRegisterTime(new Timestamp(new Date().getTime()));
         userRepository.save(user);
+
+        if (user.getUserType().equals("restaurant")){
+            Restaurant restaurant = new Restaurant();
+            restaurant.setId(user.getId());
+            restaurant.setType(restaurantTypeRepository.findOne(1l));
+            restaurantRepository.save(restaurant);
+        }
+
+        System.out.println(user.getId());
 
         logger.debug("End user save in UserServiceImpl");
     }
