@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "name")
@@ -37,7 +37,6 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
-
 
     @Transient
     private String userType;

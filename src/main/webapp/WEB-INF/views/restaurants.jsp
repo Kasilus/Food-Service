@@ -102,125 +102,33 @@
   
         <div class="restaurant_list">
 
-          <div class = "restaurant_item">
-              <div class = "row">
-                <div class = "col-sm-5">
-                    <div class = "restaurantPhoto">
-                        <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
-                    </div>
-                </div>
-                <div class = "col-sm-7">
-                    <div class = "restaurant_name">
-                        <a href="#"><strong>Domino's Pizza</strong></a>
-                    </div>
-                    <div class = "restaurant_type">
-                        <p><b>Type:</b> <span>Pizzeria</span></p>
-                    </div>
-                    <div class = "restaurant_descr">
-                    <p>"Domino's Pizza" is a world-wide network of pizzerias that has overcome the long path to leadership. Since 1960, the company has not stopped increasing the number of pizzerias around the world..
-                        Today "Domino's Pizza" has already become a world brand and is the No. 1 company in the world for the delivery of pizza - the order is delivered in 30 minutes. The global network has more than 12 000
-                        pizzerias in 85 countries of the world. Each Dominos pizzeria not only hospitably opens its doors to visitors and carries on a culinary journey to tasting pizza, but
-                        is ready to bring you a culinary masterpiece home.</p>
-                    </div>
-                </div>
-              </div>
-          </div>
+<c:forEach items="${restaurantList}" var="restaurant">
 
-            <div class = "restaurant_item">
-                <div class = "row">
-                    <div class = "col-sm-5">
-                        <div class = "restaurantPhoto">
-                            <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
-                        </div>
-                    </div>
-                    <div class = "col-sm-7">
-                        <div class = "restaurant_name">
-                            <a href="#"><strong>Domino's Pizza</strong></a>
-                        </div>
-                        <div class = "restaurant_type">
-                            <p><b>Type:</b> <span>Pizzeria</span></p>
-                        </div>
-                        <div class = "restaurant_descr">
-                            <p>"Domino's Pizza" is a world-wide network of pizzerias that has overcome the long path to leadership. Since 1960, the company has not stopped increasing the number of pizzerias around the world..
-                                Today "Domino's Pizza" has already become a world brand and is the No. 1 company in the world for the delivery of pizza - the order is delivered in 30 minutes. The global network has more than 12 000
-                                pizzerias in 85 countries of the world. Each Dominos pizzeria not only hospitably opens its doors to visitors and carries on a culinary journey to tasting pizza, but
-                                is ready to bring you a culinary masterpiece home.</p>
-                        </div>
-                    </div>
+
+
+    <div class = "restaurant_item">
+        <div class = "row">
+            <div class = "col-sm-5">
+                <div class = "restaurantPhoto">
+                    <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
                 </div>
             </div>
-
-            <div class = "restaurant_item">
-                <div class = "row">
-                    <div class = "col-sm-5">
-                        <div class = "restaurantPhoto">
-                            <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
-                        </div>
-                    </div>
-                    <div class = "col-sm-7">
-                        <div class = "restaurant_name">
-                            <a href="#"><strong>Domino's Pizza</strong></a>
-                        </div>
-                        <div class = "restaurant_type">
-                            <p><b>Type:</b> <span>Pizzeria</span></p>
-                        </div>
-                        <div class = "restaurant_descr">
-                            <p>"Domino's Pizza" is a world-wide network of pizzerias that has overcome the long path to leadership. Since 1960, the company has not stopped increasing the number of pizzerias around the world..
-                                Today "Domino's Pizza" has already become a world brand and is the No. 1 company in the world for the delivery of pizza - the order is delivered in 30 minutes. The global network has more than 12 000
-                                pizzerias in 85 countries of the world. Each Dominos pizzeria not only hospitably opens its doors to visitors and carries on a culinary journey to tasting pizza, but
-                                is ready to bring you a culinary masterpiece home.</p>
-                        </div>
-                    </div>
+            <div class = "col-sm-7">
+                <div class = "restaurant_name">
+                    <a href="#"><strong> <c:out value="${restaurant.title}"/></strong></a>
+                </div>
+                <div class = "restaurant_type">
+                    <p><b>Type:</b> <span> <c:out value="${restaurant.type.name}"/></span></p>
+                </div>
+                <div class = "restaurant_descr">
+                    <p><c:out value="${restaurant.description}"/></p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class = "restaurant_item">
-                <div class = "row">
-                    <div class = "col-sm-5">
-                        <div class = "restaurantPhoto">
-                            <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
-                        </div>
-                    </div>
-                    <div class = "col-sm-7">
-                        <div class = "restaurant_name">
-                            <a href="#"><strong>Domino's Pizza</strong></a>
-                        </div>
-                        <div class = "restaurant_type">
-                            <p><b>Type:</b> <span>Pizzeria</span></p>
-                        </div>
-                        <div class = "restaurant_descr">
-                            <p>"Domino's Pizza" is a world-wide network of pizzerias that has overcome the long path to leadership. Since 1960, the company has not stopped increasing the number of pizzerias around the world..
-                                Today "Domino's Pizza" has already become a world brand and is the No. 1 company in the world for the delivery of pizza - the order is delivered in 30 minutes. The global network has more than 12 000
-                                pizzerias in 85 countries of the world. Each Dominos pizzeria not only hospitably opens its doors to visitors and carries on a culinary journey to tasting pizza, but
-                                is ready to bring you a culinary masterpiece home.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+</c:forEach>
 
-            <div class = "restaurant_item">
-                <div class = "row">
-                    <div class = "col-sm-5">
-                        <div class = "restaurantPhoto">
-                            <img src = "${contextPath}/resources/images/dominos.jpg" alt="photo" >
-                        </div>
-                    </div>
-                    <div class = "col-sm-7">
-                        <div class = "restaurant_name">
-                            <a href="#"><strong>Domino's Pizza</strong></a>
-                        </div>
-                        <div class = "restaurant_type">
-                            <p><b>Type:</b> <span>Pizzeria</span></p>
-                        </div>
-                        <div class = "restaurant_descr">
-                            <p>"Domino's Pizza" is a world-wide network of pizzerias that has overcome the long path to leadership. Since 1960, the company has not stopped increasing the number of pizzerias around the world..
-                                Today "Domino's Pizza" has already become a world brand and is the No. 1 company in the world for the delivery of pizza - the order is delivered in 30 minutes. The global network has more than 12 000
-                                pizzerias in 85 countries of the world. Each Dominos pizzeria not only hospitably opens its doors to visitors and carries on a culinary journey to tasting pizza, but
-                                is ready to bring you a culinary masterpiece home.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class = "pages_numbers">

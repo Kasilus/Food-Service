@@ -4,11 +4,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "restaurant")
+@SecondaryTable(name = "user",pkJoinColumns = @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id"))
 public class Restaurant {
 
     @Id
     @Column(name = "user_id")
     private Long id;
+
+    @Column(table = "user", name = "name")
+    private String title;
 
     @Column(name = "description")
     private String description;
@@ -50,5 +54,13 @@ public class Restaurant {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

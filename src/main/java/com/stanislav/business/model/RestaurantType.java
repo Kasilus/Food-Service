@@ -41,4 +41,6 @@ public class RestaurantType {
     public void setRestaurants(Set<Restaurant> restaurants) {
         this.restaurants = restaurants;
     }
+
+
 }
