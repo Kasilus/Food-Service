@@ -60,7 +60,7 @@
     <div class = "container">
 
         <div class = "search_with_params">
-             <form>
+             <form action="/search">
                 <div class = "search">
                     <div class = "row">
                         <div class = "col-sm-2">
@@ -89,11 +89,11 @@
                     </div>
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
-                      <select class="form-control" id="restaurantsOnpage">
-                        <option>5</option>
-                        <option>10</option>
-                        <option>15</option>
-                        <option>20</option>
+                      <select class="form-control" id="restaurantsOnpage" name="restaurantsOnpage">
+                        <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
+                        <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
+                        <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>
+                        <option ${count == 20 ? 'selected="selected"' : ''} value="20">20</option>
                       </select>
                     </div>
                 </div>
@@ -133,9 +133,11 @@
 
         <div class = "pages_numbers">
         <ul class="pagination">
+
+
             <li class="active"><a href="#">1</a></li>
             <li ><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
+            <li><a href="#"><c:out value="${total}"/></a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">5</a></li>
           </ul>
@@ -147,6 +149,30 @@
                 <h2><small>&trade;PayEatPray, 2017</small></h2>
               </div>
           </footer>
+
+    <script>
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+        }
+        return "";
+    }
+    </script>
 
 </body>
 </html>
