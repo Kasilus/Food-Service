@@ -89,7 +89,8 @@
                     </div>
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
-                      <select class="form-control" id="restaurantsOnpage" name="restaurantsOnpage">
+                      <select class="form-control" id="restaurantsOnPage" name="restaurantsOnPage">
+                          <%--<option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>--%>
                         <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
                         <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>
@@ -134,13 +135,28 @@
         <div class = "pages_numbers">
         <ul class="pagination">
 
+            <c:set var="startIndex" scope="page" value="0"/>
+            <c:set var="endIndex" scope="page" value="12"/>
 
-            <li class="active"><a href="#">1</a></li>
-            <li ><a href="#">2</a></li>
-            <li><a href="#"><c:out value="${total}"/></a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-          </ul>
+            <%--<select name="milestone_count" id="milestone_count">--%>
+                <%--<option value="">-select-</option>--%>
+                <%--<c:forEach begin="${startIndex}" end="${endIndex}" step="1" var="index">--%>
+                    <%--<option value="${index}">${index}</option>--%>
+                <%--</c:forEach>--%>
+            <%--</select>--%>
+
+
+            <c:forEach var="i" begin="1" end="${allPages}">
+                <li class="${i == pageNumber ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
+            </c:forEach>
+
+            <%--<li class="active"><a href="#">1</a></li>--%>
+            <%--<li ><a href="#">2</a></li>--%>
+            <%--<li><a href="#"><c:out value="${allPages}"/></a></li>--%>
+            <%--<li><a href="search?restaurantsOnpage=${count}">4</a></li>--%>
+            <%--<li><a href="#">5</a></li>--%>
+
+        </ul>
           </div>
           </div>
 

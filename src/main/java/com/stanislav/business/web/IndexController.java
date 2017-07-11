@@ -32,23 +32,43 @@ public class IndexController {
             onPage = Integer.parseInt(count.toString());
         } else {
             onPage = 5;
+            model.addAttribute("count", 5);
         }
 
 
-        List<Restaurant> restaurants = restaurantRepository.findAll(new PageRequest(0, onPage)).getContent();
+        Object number = model.asMap().get("pageNumber");
+
+        Integer pageNumber;
+
+        if (number != null){
+            pageNumber = Integer.parseInt(number.toString());
+        } else {
+            pageNumber = 1;
+            model.addAttribute("pageNumber", 1);
+        }
+
+        long allPages = restaurantRepository.count()/onPage + 1;
+
+        model.addAttribute("allPages", allPages);
+
+
+        List<Restaurant> restaurants = restaurantRepository.findAll(new PageRequest(pageNumber - 1, onPage)).getContent();
 
         model.addAttribute("restaurantList", restaurants);
 
-        model.addAttribute("total",  restaurantRepository.count());
 
 
         return "restaurants";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public String search(@RequestParam("restaurantsOnpage") String restaurantsOnPage, Model model){
+    public String search(@RequestParam(value = "restaurantsOnPage" , required = false) String restaurantsOnPage,
+                         @RequestParam(value = "pageNumber", required = false) String pageNumber,
+                         Model model){
 
-            model.addAttribute("count", restaurantsOnPage);
+        model.addAttribute("count", restaurantsOnPage);
+
+        model.addAttribute("pageNumber", pageNumber);
 
         restaurants(model);
 
