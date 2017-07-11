@@ -42,3 +42,8 @@
 #hearts { color: #ee8b2d;}
 
 #hearts-existing { color: #ee8b2d;}
+
+.non-active{
+	pointer-events: none;
+	cursor: default;
+}

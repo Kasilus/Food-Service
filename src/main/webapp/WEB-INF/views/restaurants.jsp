@@ -90,7 +90,7 @@
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
                       <select class="form-control" id="restaurantsOnPage" name="restaurantsOnPage">
-                          <%--<option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>--%>
+                          <option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>
                         <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
                         <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>
