@@ -95,6 +95,7 @@
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
                         <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>
                         <option ${count == 20 ? 'selected="selected"' : ''} value="20">20</option>
+                          <%--<option ${count == 50 ? 'selected="selected"' : ''} value="50">50</option>--%>
                       </select>
                     </div>
                 </div>
@@ -135,26 +136,62 @@
         <div class = "pages_numbers">
         <ul class="pagination">
 
-            <c:set var="startIndex" scope="page" value="0"/>
-            <c:set var="endIndex" scope="page" value="12"/>
 
-            <%--<select name="milestone_count" id="milestone_count">--%>
-                <%--<option value="">-select-</option>--%>
-                <%--<c:forEach begin="${startIndex}" end="${endIndex}" step="1" var="index">--%>
-                    <%--<option value="${index}">${index}</option>--%>
-                <%--</c:forEach>--%>
-            <%--</select>--%>
+            <li class="${pageNumber == 1 ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
 
+            <c:choose>
 
-            <c:forEach var="i" begin="1" end="${allPages}">
+                <c:when test="${pageNumber == 1 || pageNumber == 2}">
+                    <c:set var="begin" value="2"></c:set>
+                        <c:choose>
+                            <c:when test="${allPages<6}">
+                                <c:set var="end" value="${allPages}"></c:set>
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="end" value="6"></c:set>
+                            </c:otherwise>
+                        </c:choose>
+                </c:when>
+                <c:otherwise>
+
+                    <c:if test="${(allPages - 5)>2 }">
+                    <li class="non-active"><a href="#">...</a></li>
+                    </c:if>
+
+                    <c:choose>
+
+                        <c:when test="${allPages - pageNumber >= 5 }">
+                            <c:set var="begin" value="${pageNumber}"></c:set>
+                            <c:set var="end" value="${pageNumber + 5}"></c:set>
+                        </c:when>
+                        <c:otherwise>
+                           <c:choose>
+                               <c:when test="${allPages > 5}">
+                                   <c:set var="begin" value="${pageNumber-(5-(allPages - pageNumber))}"/>
+                               </c:when>
+                               <c:otherwise>
+                                   <c:set var="begin" value="${2}"/>
+                               </c:otherwise>
+                           </c:choose>
+
+                            <c:set var="end" value="${allPages}"/>
+                        </c:otherwise>
+
+                    </c:choose>
+
+                </c:otherwise>
+            </c:choose>
+
+            <c:forEach var="i" begin="${begin}" end="${end}">
                 <li class="${i == pageNumber ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
             </c:forEach>
 
-            <%--<li class="active"><a href="#">1</a></li>--%>
-            <%--<li ><a href="#">2</a></li>--%>
-            <%--<li><a href="#"><c:out value="${allPages}"/></a></li>--%>
-            <%--<li><a href="search?restaurantsOnpage=${count}">4</a></li>--%>
-            <%--<li><a href="#">5</a></li>--%>
+            <c:if test="${end != allPages}">
+                <c:if test="${end != allPages - 1}">
+                    <li class="non-active"><a href="#">...</a></li>
+                </c:if>
+                <li class="${allPages == pageNumber ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${allPages}">${allPages}</a></li>
+            </c:if>
 
         </ul>
           </div>
