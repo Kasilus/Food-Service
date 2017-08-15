@@ -60,7 +60,7 @@
     <div class = "container">
 
         <div class = "search_with_params">
-             <form action="/search">
+             <form action="/restaurants">
                 <div class = "search">
                     <div class = "row">
                         <div class = "col-sm-2">
@@ -69,7 +69,9 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +139,7 @@
         <ul class="pagination">
 
 
-            <li class="${pageNumber == 1 ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
+            <li class="${pageNumber == 1 ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
 
             <c:choose>
 
@@ -183,14 +185,14 @@
             </c:choose>
 
             <c:forEach var="i" begin="${begin}" end="${end}">
-                <li class="${i == pageNumber ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
+                <li class="${i == pageNumber ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
             </c:forEach>
 
             <c:if test="${end != allPages}">
                 <c:if test="${end != allPages - 1}">
                     <li class="non-active"><a href="#">...</a></li>
                 </c:if>
-                <li class="${allPages == pageNumber ? "active" : ""}"><a href="search?restaurantsOnPage=${count}&pageNumber=${allPages}">${allPages}</a></li>
+                <li class="${allPages == pageNumber ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${allPages}">${allPages}</a></li>
             </c:if>
 
         </ul>

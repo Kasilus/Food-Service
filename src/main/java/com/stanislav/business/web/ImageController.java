@@ -2,6 +2,7 @@ package com.stanislav.business.web;
 
 import com.stanislav.business.model.Restaurant;
 import com.stanislav.business.repository.RestaurantRepository;
+import com.stanislav.business.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +19,24 @@ import java.io.IOException;
 public class ImageController {
 
     @Autowired
-    RestaurantRepository restaurantService;
+    RestaurantService restaurantService;
 
     @RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
     public void showImage(@RequestParam("id") Long restaurantId, HttpServletResponse response, HttpServletRequest request)
             throws ServletException, IOException {
 
 
-        Restaurant restaurant = restaurantService.getById(restaurantId);
-        response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-        response.getOutputStream().write(restaurant.getImage());
+        try {
 
+            Restaurant restaurant = restaurantService.getById(restaurantId);
+            response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+            response.getOutputStream().write(restaurant.getImage());
 
-        response.getOutputStream().close();
+        } finally {
+
+            response.getOutputStream().close();
+
+        }
 
     }
 }

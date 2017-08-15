@@ -37,17 +37,43 @@ public class UserServiceImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 
-
     @Override
     public void save(User user) {
 
-        logger.debug("Start user save in UserServiceImpl");
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         List<Role> roles = roleRepository.findAll();
-
         Iterator<Role> iterator = roles.iterator();
+        String userType = user.getUserType();
+
+        selectRolesForUser(iterator, userType);
+
+
+        if (userType.equals("restaurant")) {
+            user.setSex(Sex.M);
+        }
+        user.setRoles(new HashSet<>(roles));
+        user.setRegisterTime(new Timestamp(new Date().getTime()));
+        userRepository.save(user);
+
+        if (userType.equals("restaurant")){
+            saveRestaurantForUser(user.getId());
+        }
+
+    }
+
+
+    private void saveRestaurantForUser(Long userId) {
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(userId);
+        restaurant.setType(restaurantTypeRepository.findOne(1l));
+        restaurantRepository.save(restaurant);
+
+    }
+
+    private void selectRolesForUser(Iterator<Role> iterator, String userType) {
 
         while (iterator.hasNext()){
             Role role = iterator.next();
@@ -56,8 +82,7 @@ public class UserServiceImpl implements UserService {
             }
         }
 
-        if (user.getUserType().equals("user")){
-            iterator = roles.iterator();
+        if (userType.equals("user")){
 
             while (iterator.hasNext()){
                 Role role = iterator.next();
@@ -65,33 +90,12 @@ public class UserServiceImpl implements UserService {
                     iterator.remove();
                 }
             }
-        } else if (user.getUserType().equals("restaurant")){
-            user.setSex(Sex.M);
-
-        }
-        System.out.println(user.getId());
-
-        user.setRoles(new HashSet<>(roles));
-        user.setRegisterTime(new Timestamp(new Date().getTime()));
-        userRepository.save(user);
-
-        if (user.getUserType().equals("restaurant")){
-            Restaurant restaurant = new Restaurant();
-            restaurant.setId(user.getId());
-            restaurant.setType(restaurantTypeRepository.findOne(1l));
-            restaurantRepository.save(restaurant);
         }
 
-        System.out.println(user.getId());
-
-        logger.debug("End user save in UserServiceImpl");
     }
 
     @Override
     public User findByUsername(String username) {
-
-        logger.debug("User fin by username in UserServiceImpl");
-
         return userRepository.findByUsername(username);
     }
 

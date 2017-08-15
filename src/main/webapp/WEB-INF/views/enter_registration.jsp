@@ -95,8 +95,6 @@
 													</form>
 												</div>
 
-
-
 												<div class="tab-pane" id="registrationTab">
 
 													<div id="legendRegistration">
