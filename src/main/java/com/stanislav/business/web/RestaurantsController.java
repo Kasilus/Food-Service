@@ -45,7 +45,7 @@ public class RestaurantsController {
 
 
         Long allPages = restaurantService.getNumberOfAllPages(restaurantsOnCurrentPage);
-        model.addAttribute("allPages", allPages);
+        model.addAttribute("allPages", allPages.toString());
 
 
         List<Restaurant> restaurants = restaurantService.getRestaurantsForCurrentPage(pageNumber, restaurantsOnCurrentPage);
@@ -57,24 +57,24 @@ public class RestaurantsController {
 
     private Integer getCurrentPageNumber(Object number, Model model) {
 
-        int defaultValue = 1;
+        Integer defaultValue = 1;
 
         if (number != null){
             return Integer.parseInt(number.toString());
         } else {
-            model.addAttribute("pageNumber", defaultValue);
+            model.addAttribute("pageNumber", defaultValue.toString());
             return defaultValue;
         }
     }
 
     private Integer getNumberOfRestaurantsOnCurrentPage(Object count, Model model) {
 
-        int defaultValue = 5;
+        Integer defaultValue = 5;
 
         if (count != null){
             return Integer.parseInt(count.toString());
         } else {
-            model.addAttribute("count", defaultValue);
+            model.addAttribute("count", defaultValue.toString());
             return defaultValue;
         }
 

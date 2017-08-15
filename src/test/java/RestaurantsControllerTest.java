@@ -50,9 +50,53 @@ public class RestaurantsControllerTest {
     @Test
     public void testRestaurantsPage() throws Exception {
 
-
         mockMvc.perform(get("/restaurants"))
-                .andExpect(view().name("restaurants"));
+                .andExpect(view().name("restaurants"))
+                .andExpect(model().attributeExists("count", "pageNumber", "allPages", "restaurantList"));
+
+    }
+
+
+    @Test
+    public void testRestaurantsPageWithRestaurantsOnPageParameter() throws Exception {
+
+        mockMvc.perform(get("/restaurants?restaurantsOnPage=5"))
+                .andExpect(view().name("restaurants"))
+                .andExpect(model().attributeExists("count", "pageNumber"))
+                .andExpect(model().attribute("count", "5"))
+                .andExpect(model().attribute("pageNumber", "1"));
+
+    }
+
+    @Test
+    public void testRestaurantsPageWithPageNumberParameter() throws Exception {
+
+        mockMvc.perform(get("/restaurants?pageNumber=2"))
+                .andExpect(view().name("restaurants"))
+                .andExpect(model().attributeExists("count", "pageNumber"))
+                .andExpect(model().attribute("count", "5"))
+                .andExpect(model().attribute("pageNumber", "2"));
+
+    }
+
+    @Test
+    public void testRestaurantsPageWithParameters() throws Exception {
+
+        mockMvc.perform(get("/restaurants?restaurantsOnPage=10&pageNumber=2"))
+                .andExpect(view().name("restaurants"))
+                .andExpect(model().attributeExists("count", "pageNumber"))
+                .andExpect(model().attribute("count", "10"))
+                .andExpect(model().attribute("pageNumber", "2"));
+
+    }
+
+    @Test
+    public void testNumberOfPages() throws Exception {
+
+        mockMvc.perform(get("/restaurants?restaurantsOnPage=5"))
+                .andExpect(view().name("restaurants"))
+                .andExpect(model().attribute("allPages",
+                        restaurantService.getNumberOfAllPages(5).toString()));
 
     }
 
