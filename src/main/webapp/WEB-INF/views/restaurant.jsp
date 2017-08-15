@@ -43,8 +43,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-            <li ><a href="home">Home</a></li>
-            <li class="active"><a href="#">Restaurants</a></li>
+            <li ><a href="/home">Home</a></li>
+            <li class="active"><a href="/restaurants">Restaurants</a></li>
             <li><a href="#">How to order?</a></li>
             <li><a href="#">Contacts</a></li>
             <li><a href="<c:url value="/logout" />">Logout</a></li>
@@ -80,76 +80,36 @@
         </div>
     </div>
 
-<h1>Меню</h1>
+<h1>Menu</h1>
 
  <div class="table-responsive">          
   <table class="table">
     <thead>
       <tr>
         <th>#</th>
-        <th>Название</th>
-        <th>Вес, гр</th>
-        <th>Сумма, грн</th>
-		<th>Купить</th>
+        <th>Name</th>
+        <th>Cost, UAH</th>
+		<th>Buy</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
-	   <tr>
-        <td>1</td>
-        <td>Суши</td>
-        <td>120</td>
-        <td>300</td>
-		<td class="vcenter"><input type="checkbox" id="" value="1"/></td>
-      </tr>
+
+    <c:set var="counter" value="0"></c:set>
+
+    <c:forEach items="${menu}" var="meal">
+
+        <c:set var="counter" value="${counter + 1}"></c:set>
+
+            <tr>
+            <td>${counter}</td>
+            <td>${meal.name}</td>
+            <td>${meal.price}</td>
+            <td class="vcenter"><input type="checkbox" id="" value="1"/></td>
+            </tr>
+
+    </c:forEach>
+
+
     </tbody>
   </table>
   </div>

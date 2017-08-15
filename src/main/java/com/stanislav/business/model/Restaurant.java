@@ -1,6 +1,7 @@
 package com.stanislav.business.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "restaurant")
@@ -23,6 +24,10 @@ public class Restaurant {
 
     @Column(name = "image")
     private byte[] image;
+
+//    @OneToMany
+//    @JoinTable(name = "restaurant_meals")
+//    private List<Meal> meals;
 
     public Long getId() {
         return id;

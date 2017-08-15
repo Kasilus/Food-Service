@@ -21,7 +21,7 @@ public class IndexController {
 
     @RequestMapping(value = "home")
     public String home() {
-        return "redirect:/index";
+        return "index";
     }
 
 }
