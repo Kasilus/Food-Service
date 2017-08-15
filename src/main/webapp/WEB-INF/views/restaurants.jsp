@@ -119,7 +119,7 @@
             </div>
             <div class = "col-sm-7">
                 <div class = "restaurant_name">
-                    <a href="#"><strong> <c:out value="${restaurant.title}"/></strong></a>
+                    <a href="/restaurant/${restaurant.id}"><strong> <c:out value="${restaurant.title}"/></strong></a>
                 </div>
                 <div class = "restaurant_type">
                     <p><b>Type:</b> <span> <c:out value="${restaurant.type.name}"/></span></p>
