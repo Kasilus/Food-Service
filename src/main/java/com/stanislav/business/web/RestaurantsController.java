@@ -18,6 +18,14 @@ public class RestaurantsController {
     @Autowired
     private RestaurantService restaurantService;
 
+    public RestaurantsController(){
+
+    }
+
+    public RestaurantsController(RestaurantService restaurantService) {
+        this.restaurantService = restaurantService;
+    }
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String restaurants(@RequestParam(value = "restaurantsOnPage" , required = false) String restaurantsOnPageAttr,
@@ -36,7 +44,7 @@ public class RestaurantsController {
         Integer pageNumber = getCurrentPageNumber(number, model);
 
 
-        long allPages = restaurantService.getNumberOfAllPages(restaurantsOnCurrentPage);
+        Long allPages = restaurantService.getNumberOfAllPages(restaurantsOnCurrentPage);
         model.addAttribute("allPages", allPages);
 
 
