@@ -96,7 +96,7 @@
 
     <c:set var="counter" value="0"></c:set>
 
-    <c:forEach items="${menu}" var="meal">
+    <c:forEach items="${menuList}" var="meal">
 
         <c:set var="counter" value="${counter + 1}"></c:set>
 

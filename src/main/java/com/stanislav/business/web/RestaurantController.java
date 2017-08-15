@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,8 +17,6 @@ import java.util.List;
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
-    @Autowired
-    MealRepository mealRepository;
 
     @Autowired
     public RestaurantService restaurantService;
@@ -33,9 +30,9 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.getById(restaurantId);
         model.addAttribute("restaurant", restaurant);
 
-        Meal[] meals = mealRepository.getAllByUser(restaurantId);
-        List<Meal> menu = Arrays.asList(meals);
-        model.addAttribute("menu", menu);
+
+        List<Meal> menuList = restaurantService.getMealsByRestaurantId(restaurantId);
+        model.addAttribute("menuList", menuList);
 
         return "restaurant";
     }

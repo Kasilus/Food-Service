@@ -1,5 +1,6 @@
 package com.stanislav.business.service;
 
+import com.stanislav.business.model.Meal;
 import com.stanislav.business.model.Restaurant;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface RestaurantService {
     List<Restaurant> getRestaurantsForCurrentPage(Integer pageNumber, Integer onPage);
 
     Long getNumberOfAllPages(Integer onPage);
+
+    List<Meal> getMealsByRestaurantId(Long restaurantId);
 }
