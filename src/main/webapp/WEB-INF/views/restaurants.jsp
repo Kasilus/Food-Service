@@ -92,6 +92,7 @@
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
                       <select class="form-control" id="restaurantsOnPage" name="restaurantsOnPage">
+                          <<option ${count == 1 ? 'selected="selected"' : ''} value="1">1</option>
                           <option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>
                         <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
@@ -141,48 +142,29 @@
 
             <li class="${pageNumber == 1 ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
 
-            <c:choose>
 
-                <c:when test="${pageNumber == 1 || pageNumber == 2}">
-                    <c:set var="begin" value="2"></c:set>
-                        <c:choose>
-                            <c:when test="${allPages<6}">
-                                <c:set var="end" value="${allPages}"></c:set>
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="end" value="6"></c:set>
-                            </c:otherwise>
-                        </c:choose>
+            <c:choose>
+                <c:when test="${pageNumber - 2 > 1}">
+                    <c:set var="begin" value="${pageNumber - 2}"></c:set>
+                    <c:if test="${begin != 2}">
+                        <li class="non-active"><a href="#">...</a></li>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
-
-                    <c:if test="${(allPages - 5)>2 }">
-                    <li class="non-active"><a href="#">...</a></li>
-                    </c:if>
-
-                    <c:choose>
-
-                        <c:when test="${allPages - pageNumber >= 5 }">
-                            <c:set var="begin" value="${pageNumber}"></c:set>
-                            <c:set var="end" value="${pageNumber + 5}"></c:set>
-                        </c:when>
-                        <c:otherwise>
-                           <c:choose>
-                               <c:when test="${allPages > 5}">
-                                   <c:set var="begin" value="${pageNumber-(5-(allPages - pageNumber))}"/>
-                               </c:when>
-                               <c:otherwise>
-                                   <c:set var="begin" value="${2}"/>
-                               </c:otherwise>
-                           </c:choose>
-
-                            <c:set var="end" value="${allPages}"/>
-                        </c:otherwise>
-
-                    </c:choose>
-
+                    <c:set var="begin" value="2"></c:set>
                 </c:otherwise>
             </c:choose>
+
+            <c:choose>
+                <c:when test="${pageNumber + 2 < allPages - 1}">
+                    <c:set var="end" value="${pageNumber+2}"></c:set>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="end" value="${allPages}"></c:set>
+                </c:otherwise>
+            </c:choose>
+
+
 
             <c:forEach var="i" begin="${begin}" end="${end}">
                 <li class="${i == pageNumber ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
@@ -199,11 +181,13 @@
           </div>
           </div>
 
+
           <footer>
               <div class="container-fluid bg-grey text-center">
                 <h2><small>&trade;PayEatPray, 2017</small></h2>
               </div>
           </footer>
+
 
     <script>
     function setCookie(cname, cvalue, exdays) {
