@@ -1,5 +1,7 @@
 package com.stanislav.business.model;
 
+import com.stanislav.business.model.enumerations.Sex;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;

@@ -67,7 +67,7 @@
                         </div>
                         <div class = "col-sm-8">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         <i class="glyphicon glyphicon-search"></i>
@@ -92,8 +92,8 @@
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
                       <select class="form-control" id="restaurantsOnPage" name="restaurantsOnPage">
-                          <<option ${count == 1 ? 'selected="selected"' : ''} value="1">1</option>
-                          <option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>
+                          <%--<<option ${count == 1 ? 'selected="selected"' : ''} value="1">1</option>--%>
+                          <%--<option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>--%>
                         <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
                         <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>

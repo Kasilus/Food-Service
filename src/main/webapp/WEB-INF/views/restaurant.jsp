@@ -100,11 +100,11 @@
 
         <c:set var="counter" value="${counter + 1}"></c:set>
 
-            <tr>
+            <tr id = "meal" + ${counter}>
             <td>${counter}</td>
             <td>${meal.name}</td>
             <td>${meal.price}</td>
-            <td class="vcenter"><input type="checkbox" id="" value="1"/></td>
+            <td class="vcenter"><input type="checkbox" checked = "true" id="" value="1"/></td>
             </tr>
 
     </c:forEach>

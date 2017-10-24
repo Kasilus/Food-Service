@@ -13,5 +13,9 @@ public interface RestaurantService {
 
     Long getNumberOfAllPages(Integer onPage);
 
+    Long getAmountOfPagesByTitle(String title, Integer itemsOnPage);
+
     List<Meal> getMealsByRestaurantId(Long restaurantId);
+
+    List<Restaurant> getRestaurantsByTitleForCurrentPageWithSpecifiedSize(String title, Integer limit, Integer offset);
 }

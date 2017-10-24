@@ -2,11 +2,11 @@ package com.stanislav.business.service;
 
 
 import com.stanislav.business.model.*;
+import com.stanislav.business.model.enumerations.Sex;
 import com.stanislav.business.repository.RestaurantRepository;
 import com.stanislav.business.repository.RestaurantTypeRepository;
 import com.stanislav.business.repository.RoleRepository;
 import com.stanislav.business.repository.UserRepository;
-import com.stanislav.business.validator.UserValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

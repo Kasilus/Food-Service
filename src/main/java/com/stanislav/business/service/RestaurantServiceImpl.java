@@ -5,6 +5,7 @@ import com.stanislav.business.model.Restaurant;
 import com.stanislav.business.repository.MealRepository;
 import com.stanislav.business.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +37,23 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    public List<Restaurant> getRestaurantsByTitleForCurrentPageWithSpecifiedSize(String title, Integer limit, Integer offset) {
+        return restaurantRepository.findByTitleIgnoreCaseContaining(title, new PageRequest(offset - 1,limit));
+    }
+
+    @Override
     public Long getNumberOfAllPages(Integer onPage) {
 
         return restaurantRepository.count()/onPage + 1;
+
+    }
+
+    @Override
+    public Long getAmountOfPagesByTitle(String title, Integer itemsOnPage) {
+
+
+        Long amountOfPages = restaurantRepository.countByTitleIgnoreCaseContaining(title)/ itemsOnPage + 1;
+        return amountOfPages;
 
     }
 
@@ -50,5 +65,8 @@ public class RestaurantServiceImpl implements RestaurantService {
         return mealList;
 
     }
+
+
+
 
 }

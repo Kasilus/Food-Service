@@ -30,26 +30,42 @@ public class RestaurantsController {
     @RequestMapping(method = RequestMethod.GET)
     public String restaurants(@RequestParam(value = "restaurantsOnPage" , required = false) String restaurantsOnPageAttr,
                               @RequestParam(value = "pageNumber", required = false) String pageNumberAttr,
+                              @RequestParam(value = "searchInput", required = false) String searchInputAttr,
                               Model model){
+
+        if (searchInputAttr == null){
+            searchInputAttr = "";
+        } else {
+
+        }
 
         model.addAttribute("pageNumber", pageNumberAttr);
         model.addAttribute("count", restaurantsOnPageAttr);
 
-
         Object count = model.asMap().get("count");
         Integer restaurantsOnCurrentPage = getNumberOfRestaurantsOnCurrentPage(count, model);
-
 
         Object number = model.asMap().get("pageNumber");
         Integer pageNumber = getCurrentPageNumber(number, model);
 
+//        List<Restaurant> restaurants = restaurantService.getRestaurantsForCurrentPage(pageNumber, restaurantsOnCurrentPage);
+        List<Restaurant> restaurants = restaurantService.getRestaurantsByTitleForCurrentPageWithSpecifiedSize(searchInputAttr, restaurantsOnCurrentPage, pageNumber);
 
-        Long allPages = restaurantService.getNumberOfAllPages(restaurantsOnCurrentPage);
+        Long allPages = restaurantService.getAmountOfPagesByTitle(searchInputAttr, restaurantsOnCurrentPage);
         model.addAttribute("allPages", allPages.toString());
 
-
-        List<Restaurant> restaurants = restaurantService.getRestaurantsForCurrentPage(pageNumber, restaurantsOnCurrentPage);
         model.addAttribute("restaurantList", restaurants);
+
+
+
+
+
+
+
+
+
+
+
 
 
         return "restaurants";
