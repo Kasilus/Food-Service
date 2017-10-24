@@ -67,7 +67,7 @@
                         </div>
                         <div class = "col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search">
+                                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search" value="${search != null ? search : ''}">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         <i class="glyphicon glyphicon-search"></i>
@@ -92,13 +92,10 @@
                     <div class = "col-sm-2">
                     <label for="restaurantsOnpage">Amount on page:</label>
                       <select class="form-control" id="restaurantsOnPage" name="restaurantsOnPage">
-                          <%--<<option ${count == 1 ? 'selected="selected"' : ''} value="1">1</option>--%>
-                          <%--<option ${count == 3 ? 'selected="selected"' : ''} value="3">3</option>--%>
                         <option ${count == 5 ? 'selected="selected"' : ''} value="5">5</option>
                         <option ${count == 10 ? 'selected="selected"' : ''}  value="10">10</option>
                         <option ${count == 15 ? 'selected="selected"' : ''} value="15">15</option>
                         <option ${count == 20 ? 'selected="selected"' : ''} value="20">20</option>
-                          <%--<option ${count == 50 ? 'selected="selected"' : ''} value="50">50</option>--%>
                       </select>
                     </div>
                 </div>
@@ -140,7 +137,7 @@
         <ul class="pagination">
 
 
-            <li class="${pageNumber == 1 ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
+            <li class="${pageNumber == 1 ? "active" : ""}"><a href="restaurants?searchInput=${search}&restaurantsOnPage=${count}&pageNumber=${1}">1</a></li>
 
 
             <c:choose>
@@ -167,14 +164,14 @@
 
 
             <c:forEach var="i" begin="${begin}" end="${end}">
-                <li class="${i == pageNumber ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
+                <li class="${i == pageNumber ? "active" : ""}"><a href="restaurants?searchInput=${search}&restaurantsOnPage=${count}&pageNumber=${i}">${i}</a></li>
             </c:forEach>
 
             <c:if test="${end != allPages}">
                 <c:if test="${end != allPages - 1}">
                     <li class="non-active"><a href="#">...</a></li>
                 </c:if>
-                <li class="${allPages == pageNumber ? "active" : ""}"><a href="restaurants?restaurantsOnPage=${count}&pageNumber=${allPages}">${allPages}</a></li>
+                <li class="${allPages == pageNumber ? "active" : ""}"><a href="restaurants?searchInput=${search}&restaurantsOnPage=${count}&pageNumber=${allPages}">${allPages}</a></li>
             </c:if>
 
         </ul>

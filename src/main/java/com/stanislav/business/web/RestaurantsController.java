@@ -33,39 +33,29 @@ public class RestaurantsController {
                               @RequestParam(value = "searchInput", required = false) String searchInputAttr,
                               Model model){
 
-        if (searchInputAttr == null){
-            searchInputAttr = "";
-        } else {
-
-        }
-
         model.addAttribute("pageNumber", pageNumberAttr);
         model.addAttribute("count", restaurantsOnPageAttr);
 
         Object count = model.asMap().get("count");
         Integer restaurantsOnCurrentPage = getNumberOfRestaurantsOnCurrentPage(count, model);
-
         Object number = model.asMap().get("pageNumber");
         Integer pageNumber = getCurrentPageNumber(number, model);
 
-//        List<Restaurant> restaurants = restaurantService.getRestaurantsForCurrentPage(pageNumber, restaurantsOnCurrentPage);
-        List<Restaurant> restaurants = restaurantService.getRestaurantsByTitleForCurrentPageWithSpecifiedSize(searchInputAttr, restaurantsOnCurrentPage, pageNumber);
+        List<Restaurant> restaurants;
+        Long allPages;
 
-        Long allPages = restaurantService.getAmountOfPagesByTitle(searchInputAttr, restaurantsOnCurrentPage);
+        if (searchInputAttr == null){
+            restaurants = restaurantService.getRestaurantsForCurrentPageWithSpecifiedSize(restaurantsOnCurrentPage, pageNumber);
+            allPages = restaurantService.getAmountOfPages(restaurantsOnCurrentPage);
+        } else {
+            restaurants = restaurantService.getRestaurantsByTitleForCurrentPageWithSpecifiedSize(searchInputAttr, restaurantsOnCurrentPage, pageNumber);
+            allPages = restaurantService.getAmountOfPagesByTitle(searchInputAttr, restaurantsOnCurrentPage);
+            model.addAttribute("search", searchInputAttr);
+        }
+
+
         model.addAttribute("allPages", allPages.toString());
-
         model.addAttribute("restaurantList", restaurants);
-
-
-
-
-
-
-
-
-
-
-
 
 
         return "restaurants";

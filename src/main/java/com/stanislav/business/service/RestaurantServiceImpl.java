@@ -29,11 +29,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
+
     @Override
-    public List<Restaurant> getRestaurantsForCurrentPage(Integer pageNumber, Integer onPage) {
-
-        return restaurantRepository.findAll(new PageRequest(pageNumber - 1, onPage)).getContent();
-
+    public List<Restaurant> getRestaurantsForCurrentPageWithSpecifiedSize(Integer limit, Integer offset) {
+        return restaurantRepository.findAll(new PageRequest(offset - 1, limit)).getContent();
     }
 
     @Override
@@ -45,6 +44,14 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Long getNumberOfAllPages(Integer onPage) {
 
         return restaurantRepository.count()/onPage + 1;
+
+    }
+
+    @Override
+    public Long getAmountOfPages(Integer itemsOnPage) {
+
+        Long amountOfPages = restaurantRepository.count()/itemsOnPage + 1;
+        return amountOfPages;
 
     }
 
