@@ -57,54 +57,46 @@
 
 <div class="container">
     <div class="row">
-        <div class="row">
+
+        <h1>About user</h1> <br/><br/>
+
             <div class="col-md-5 col-md-offset-2">
                 <label class="control-label">Name:</label>
             </div>
             <div class="col-md-3">
                 <label class="control-label">${userInfo.name}</label>
             </div>
+
+
+        <div class="col-md-5 col-md-offset-2">
+            <label class="control-label">E-mail:</label>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">${userInfo.email}</label>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2">
+            <label class="control-label">Register time:</label>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">${userInfo.registerTime}</label>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2">
+            <label class="control-label">Sex:</label>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">${userInfo.sex}</label>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2">
+            <label class="control-label">Phone number:</label>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">${userInfo.phone}</label>
         </div>
     </div>
 </div>
-
-
-<div class="form-group">
-    <label class="control-label col-sm-2">Name:</label>
-    <div class="col-sm-10">
-        <label class="control-label">${userInfo.name}</label>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-sm-2">E-mail:</label>
-    <div class="col-sm-10">
-        <label class="control-label">${userInfo.email}</label>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-sm-2">Register time:</label>
-    <div class="col-sm-10">
-        <label class="control-label">${userInfo.registerTime}</label>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-sm-2">Sex:</label>
-    <div class="col-sm-10">
-        <label class="control-label">${userInfo.sex}</label>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-sm-2">Phone number:</label>
-    <div class="col-sm-10">
-        <label class="control-label">${userInfo.phone}</label>
-    </div>
-</div>
-
-
 
 
 </body>
