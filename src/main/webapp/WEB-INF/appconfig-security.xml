@@ -12,11 +12,11 @@
 
         <access-denied-handler error-page="/accessDenied.htm" />
 
-        <intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/" access="hasRole('ROLE_RESTAURANT')"/>
-        <intercept-url pattern="/index" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/index" access="hasRole('ROLE_RESTAURANT')"/>
-        <intercept-url pattern="/restaurants" access="isAuthenticated()" />
+        <!--<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />-->
+        <!--<intercept-url pattern="/" access="hasRole('ROLE_RESTAURANT')"/>-->
+        <!--<intercept-url pattern="/index" access="hasRole('ROLE_ADMIN')"/>-->
+        <!--<intercept-url pattern="/index" access="hasRole('ROLE_RESTAURANT')"/>-->
+        <!--<intercept-url pattern="/restaurants" access="isAuthenticated()" />-->
 
         <form-login
                 login-page="/enter_registration"

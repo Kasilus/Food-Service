@@ -40,27 +40,41 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
 
-
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        List<Role> roles = roleRepository.findAll();
-        Iterator<Role> iterator = roles.iterator();
         String userType = user.getUserType();
-
-        selectRolesForUser(iterator, userType);
-
+        List<Role> roles = getRolesByUserType(userType);
 
         if (userType.equals("restaurant")) {
             user.setSex(Sex.M);
         }
+
         user.setRoles(new HashSet<>(roles));
         user.setRegisterTime(new Timestamp(new Date().getTime()));
+
         userRepository.save(user);
+
 
         if (userType.equals("restaurant")){
             saveRestaurantForUser(user.getId());
         }
 
+    }
+
+    private List<Role> getRolesByUserType(String userType) {
+
+        List<Role> roles = new ArrayList<>();
+
+        if (userType.equals("user")){
+            roles.add(roleRepository.findByName("ROLE_USER"));
+        } else
+        if (userType.equals("restaurant")){
+            roles.add(roleRepository.findByName("ROLE_USER"));
+            roles.add(roleRepository.findByName("ROLE_RESTAURANT"));
+
+        }
+
+        return roles;
     }
 
 
@@ -73,26 +87,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    private void selectRolesForUser(Iterator<Role> iterator, String userType) {
-
-        while (iterator.hasNext()){
-            Role role = iterator.next();
-            if (role.getName().equals("ROLE_ADMIN")){
-                iterator.remove();
-            }
-        }
-
-        if (userType.equals("user")){
-
-            while (iterator.hasNext()){
-                Role role = iterator.next();
-                if (role.getName().equals("ROLE_RESTAURANT")){
-                    iterator.remove();
-                }
-            }
-        }
-
-    }
 
     @Override
     public User findByUsername(String username) {
